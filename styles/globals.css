@@ -27,3 +27,7 @@ a {
     background: black;
   }
 }
+.side_scroll{
+  overflow-y:scroll;
+  
+}
