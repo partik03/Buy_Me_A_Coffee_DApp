@@ -6,6 +6,7 @@ import { ethers } from "ethers"
 import { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { SiBuymeacoffee } from "react-icons/si";
+import Memos from '../components/Memo'
 export default function Home() {
   const address = process.env.CONTRACT_ADDRESS
   const contract_abi = abi.abi;
@@ -90,7 +91,7 @@ export default function Home() {
         const signer = provider.getSigner();
         const contract = new ethers.Contract(address, contract_abi, signer);
         const memos = await contract.getMemos();
-        console.log(memos);
+        console.log("Memos",memos);
         setMemos(memos)
       }
     } catch (error) {
@@ -144,7 +145,7 @@ if(ethereum){
 
       <main className='w-screen h-screen'>
         <Navbar connected={connected} connectWallet={connectWallet} account={currentAccount}/>
-        <div className="w-screen h-[88%] flex bg-sky-300">
+        <div className="w-screen h-[88%] flex bg-sky-300 ">
         <div className='w-1/3 h-full pt-10 px-2 '>
           <h1 className='text-2xl font-bold text-center'>Messages from Supporters</h1>
           <div className='h-[90%] side_scroll bg-sky-200'>
@@ -153,7 +154,7 @@ if(ethereum){
           memos.map((e)=>{
             console.log(e);
             return(
-              <h1>{e[3]}</h1>
+              <Memos memos={e}/>
             )
             
           })
@@ -186,11 +187,8 @@ if(ethereum){
 
         </div>
         {/* <button onClick={buyCoffee}>Buy Coffee</button> */}
-        
          </div>
-        </div>
-        
-        
+        </div> 
       </main>
     </div>
   )
