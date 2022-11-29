@@ -4,7 +4,7 @@ const Navbar = ({connected,account,connectWallet}) => {
   return (
     <nav className='h-20 flex items-center px-8 justify-between bg-sky-100'>
         <div>
-            <h1>Logo</h1>
+            <h1 className='logo'>Buy Me A Coffee</h1>
         </div>
         <div>
             {
@@ -12,7 +12,10 @@ const Navbar = ({connected,account,connectWallet}) => {
                 <button onClick={connectWallet} className='px-5 py-3 bg-sky-600 rounded-md  text-white'>Connect Wallet</button>
                 :
                 <div>
-                    <p>{account}</p>
+                    <div className='px-2 py-4 bg-sky-300 rounded-3xl text-white'>
+                    {account}
+                    </div>
+                    
                 </div>
 
             }

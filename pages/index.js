@@ -78,6 +78,7 @@ export default function Home() {
         const transaction = await contract.buycoffee(name?name:"Unknown",message?message:"Enjoy Your Coffee",{value: ethers.utils.parseEther((value *0.001).toString())});
         await transaction.wait();
         console.log(`${currentAccount} has bought a coffee`);
+        getMemos();
       }
     } catch (error) {
       console.log(error);
@@ -180,7 +181,7 @@ if(ethereum){
                 <input type="text" placeholder='Unknown' onChange={(e)=>{setName(e.target.value)}}  className="py-5 px-3 rounded-2xl w-full outline-none" />
               </div>
               <div className='w-4/5'>
-                <input name="" className='mt-4 rounded-2xl outline-none px-4 w-full py-5' placeholder='Enjoy Your Coffee' id="" />
+                <input name="" className='mt-4 rounded-2xl outline-none px-4 w-full py-5' onChange={(e)=>{setMessage(e.target.value)}} placeholder='Enjoy Your Coffee' id="" />
               </div>
               <button onClick={buyCoffee} className=' mt-3 w-4/5 px-5 py-3 bg-sky-600 rounded-md  text-white'>Buy Coffee</button>
           </div>
