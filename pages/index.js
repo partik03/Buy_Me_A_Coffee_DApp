@@ -152,10 +152,10 @@ if(ethereum){
           <div className='h-[90%] side_scroll bg-sky-200'>
           {
           memos &&
-          memos.map((e)=>{
+          memos.map((e,index)=>{
             console.log(e);
             return(
-              <Memos memos={e}/>
+              <Memos memos={e} key={index}/>
             )
             
           })
